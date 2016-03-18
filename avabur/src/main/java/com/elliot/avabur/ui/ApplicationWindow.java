@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 import com.elliot.avabur.appender.Log4jAppender;
 import com.elliot.avabur.application.Application;
+import javax.swing.JCheckBox;
 
 
 public class ApplicationWindow {
@@ -32,6 +33,7 @@ public class ApplicationWindow {
     private JComboBox browserComboBox;
     private JComboBox questComboBox;
     private JComboBox monsterComboBox;
+    private JCheckBox actionSwitchTextBox;
     
     private Thread gameThread;
     private Application application;
@@ -89,6 +91,10 @@ public class ApplicationWindow {
         passwordTextField.setBounds(73, 42, 125, 20);
         frame.getContentPane().add(passwordTextField);
       
+        actionSwitchTextBox = new JCheckBox("Auto Switch");
+        actionSwitchTextBox.setBounds(179, 74, 97, 23);
+        frame.getContentPane().add(actionSwitchTextBox);
+        
         monsterComboBox = new JComboBox();
         monsterComboBox.setBounds(73, 104, 125, 20);
         frame.getContentPane().add(monsterComboBox);
@@ -152,6 +158,31 @@ public class ApplicationWindow {
         monsterComboBox.addItem("Vapormorph");
         monsterComboBox.addItem("Mud Dragon");
         monsterComboBox.addItem("Tides of Marsh");
+        monsterComboBox.addItem("Field Rat");
+        monsterComboBox.addItem("Hill Giant");
+        monsterComboBox.addItem("Myrmecoleon");
+        monsterComboBox.addItem("Ogre Mage");
+        monsterComboBox.addItem("Athrosy");
+        monsterComboBox.addItem("Orcling");
+        monsterComboBox.addItem("Yali");
+        monsterComboBox.addItem("Chimera");
+        monsterComboBox.addItem("Wyvern");
+        monsterComboBox.addItem("Ekek");
+        monsterComboBox.addItem("Zabok");
+        monsterComboBox.addItem("Fire Naga");
+        monsterComboBox.addItem("Hippogriff");
+        monsterComboBox.addItem("Orc Warrior");
+        monsterComboBox.addItem("Bronze Dragon");
+        monsterComboBox.addItem("Kathorsa");
+        monsterComboBox.addItem("Dark Naga");
+        monsterComboBox.addItem("Green Dragon");
+        monsterComboBox.addItem("Orc Weaponsmith");
+        monsterComboBox.addItem("Angha");
+        monsterComboBox.addItem("Copper Dragon");
+        monsterComboBox.addItem("Griffon");
+        monsterComboBox.addItem("Orc Armorsmith");
+        monsterComboBox.addItem("Golden Dragon");
+
 
         
         JLabel monsterLabel = new JLabel("Monster");
@@ -221,6 +252,31 @@ public class ApplicationWindow {
         questComboBox.addItem("Vapormorph");
         questComboBox.addItem("Mud Dragon");
         questComboBox.addItem("Tides of Marsh");
+        questComboBox.addItem("Field Rat");
+        questComboBox.addItem("Hill Giant");
+        questComboBox.addItem("Myrmecoleon");
+        questComboBox.addItem("Ogre Mage");
+        questComboBox.addItem("Athrosy");
+        questComboBox.addItem("Orcling");
+        questComboBox.addItem("Yali");
+        questComboBox.addItem("Chimera");
+        questComboBox.addItem("Wyvern");
+        questComboBox.addItem("Ekek");
+        questComboBox.addItem("Zabok");
+        questComboBox.addItem("Fire Naga");
+        questComboBox.addItem("Hippogriff");
+        questComboBox.addItem("Orc Warrior");
+        questComboBox.addItem("Bronze Dragon");
+        questComboBox.addItem("Kathorsa");
+        questComboBox.addItem("Dark Naga");
+        questComboBox.addItem("Green Dragon");
+        questComboBox.addItem("Orc Weaponsmith");
+        questComboBox.addItem("Angha");
+        questComboBox.addItem("Copper Dragon");
+        questComboBox.addItem("Griffon");
+        questComboBox.addItem("Orc Armorsmith");
+        questComboBox.addItem("Golden Dragon");
+
 
        
         browserComboBox= new JComboBox();
@@ -287,7 +343,7 @@ public class ApplicationWindow {
         jobGroup.add(combatRadio);
         
         JRadioButton harvestingRadio = new JRadioButton("Harvesting");
-        harvestingRadio.setBounds(89, 74, 94, 23);
+        harvestingRadio.setBounds(89, 74, 88, 23);
         frame.getContentPane().add(harvestingRadio);
         jobGroup.add(harvestingRadio);
         
@@ -361,6 +417,8 @@ public class ApplicationWindow {
         changeObjectiveButton.setBounds(358, 164, 125, 23);
         frame.getContentPane().add(changeObjectiveButton);
         
+      
+        
     }
     
     private void setApplicationValues() {
@@ -371,9 +429,9 @@ public class ApplicationWindow {
             application.setMonster(monsterComboBox.getSelectedItem().toString());
             application.setBrowser(browserComboBox.getSelectedItem().toString());
             application.setHarvesting(harvestingComboBox.getSelectedItem().toString());
-            application.setCombat(combatRadio.isSelected()); 
+            application.setCombat(combatRadio.isSelected());
+            application.setAutoSwitchMode(actionSwitchTextBox.isSelected());
         }
 
     }
-   
 }

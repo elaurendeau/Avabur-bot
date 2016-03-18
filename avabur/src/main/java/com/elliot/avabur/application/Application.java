@@ -36,6 +36,7 @@ public class Application implements Runnable {
     private boolean requestReset;
     private boolean loggedIn;
     private boolean isCombat;
+    private boolean autoSwitchMode;
 
     private WebDriver driver;
 
@@ -64,7 +65,7 @@ public class Application implements Runnable {
             }
 
             jobService.verifyQuest(driver, quest);
-            if(isCombat) {
+            if (isCombat) {
                 jobService.startBattle(driver, monster);
             } else {
                 jobService.startHarvesting(driver, harvesting);
@@ -79,7 +80,12 @@ public class Application implements Runnable {
                 if (count > 180) {
                     utilityService.restartGame(driver);
                     Thread.sleep(GameConstant.SLEEP_TIME);
-                    if(isCombat) {
+                    
+                    if(autoSwitchMode) {
+                        isCombat = !isCombat;
+                    }
+                    
+                    if (isCombat) {
                         jobService.startBattle(driver, monster);
                     } else {
                         jobService.startHarvesting(driver, harvesting);
@@ -95,7 +101,7 @@ public class Application implements Runnable {
                     try {
                         jobService.verifyQuest(driver, quest);
                         Thread.sleep(GameConstant.SLEEP_TIME);
-                        if(isCombat) {
+                        if (isCombat) {
                             jobService.startBattle(driver, monster);
                         } else {
                             jobService.startHarvesting(driver, harvesting);
@@ -266,6 +272,14 @@ public class Application implements Runnable {
 
     public void setDriver(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public boolean isAutoSwitchMode() {
+        return autoSwitchMode;
+    }
+
+    public void setAutoSwitchMode(boolean autoSwitchMode) {
+        this.autoSwitchMode = autoSwitchMode;
     }
 
 }
